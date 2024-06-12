@@ -34,30 +34,6 @@ class TreeStyle(Style):
         return result
 
 
-# class RectangleStyle(Style):
-#     def render_container(self, container, icon, prefix, icon_family, is_last):
-#         # 构建当前容器节点的字符串表示
-#         result = f"{prefix}{'├─' if is_last else '┌─'} {icon} {container.name}\n"
-#         for i, child in enumerate(container.children):
-#             # 根据是否是最后一个子节点选择不同的前缀
-#             new_prefix = prefix + ("|   " if is_last else "│   ")
-#             # 递归渲染子节点
-#             result += child.draw(
-#                 self, icon_family, new_prefix, i == len(container.children) - 1
-#             )
-#         return result
-
-
-#     def render_leaf(self, leaf, icon, prefix, is_last):
-#         # 构建叶子节点的字符串表示
-#         result = (
-#             f"{prefix}{'└─' if is_last else '├─'} {icon} {leaf.name}: {leaf.value}\n"
-#             if leaf.value is not None
-#             else f"{prefix}{'└─' if is_last else '├─'} {icon} {leaf.name}\n"
-#         )
-#         return result
-
-
 class RectangleStyle(Style):
     def render_container(self, container, icon, prefix, icon_family, is_last):
         level = len(prefix) // 3  # 计算当前层级
@@ -77,16 +53,16 @@ class RectangleStyle(Style):
         return result
 
     def render_leaf(self, leaf, icon, prefix, is_last):
-        leafresult = (
+        Leaf_Result = (
             f"{prefix}├─ {icon} {leaf.name}: {leaf.value} "
             if leaf.value is not None
             else f"{prefix}├─ {icon} {leaf.name} "
         )
         if is_last:
-            leafresult = leafresult.replace("├─", "└─")
+            Leaf_Result = Leaf_Result.replace("├─", "└─")
         level = len(prefix) // 3  # 计算当前层级
         return (
-            leafresult + "─" * (64 - len(leafresult) - level + 2) + "│" * level + "\n"
+            Leaf_Result + "─" * (64 - len(Leaf_Result) - level + 2) + "│" * level + "\n"
         )
 
 
