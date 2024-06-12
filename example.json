@@ -1,0 +1,16 @@
+{
+    "Student": {
+        "name": "Lin Runnan",
+        "number": "21307382"
+    },
+    "oranges": {
+        "mandarin": {
+            "clementine": null,
+            "tangerine": "cheap & juicy!"
+        }
+    },
+    "apples": {
+        "gala": null,
+        "pink lady": null
+    }
+}
